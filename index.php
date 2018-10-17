@@ -78,6 +78,10 @@ $f3->config('config.ini');
 
 $f3->route('GET /',function($f3){
 	// $f3->set('content','home-02.html');
+	$result=$f3->get("DB")->exec(
+        'SELECT * FROM `Barang`'
+    );
+	var_dump($result);
 	$view=new View;
     echo $view->render('home.html');
 });
@@ -110,10 +114,10 @@ $f3->route('GET /userref',
 	}
 );
 
-// $f3->set("DB",new DB\SQL(
-//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-//     'id7413042_bukantokosebelah',
-//     'admin'
-// ));
+$f3->set("DB",new DB\SQL(
+    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+    'id7413042_admin',
+    'admin123'
+));
 
 $f3->run();
