@@ -77,9 +77,30 @@ $f3->config('config.ini');
 // );
 
 $f3->route('GET /',function($f3){
-	$f3->set('content','home.html');
+	// $f3->set('content','home-02.html');
 	$view=new View;
     echo $view->render('home.html');
+});
+
+$f3->route('GET /product',function($f3){
+	// $f3->set('content','home-02.html');
+	$view=new View;
+    echo $view->render('product.html');
+});
+$f3->route('GET /cart',function($f3){
+	// $f3->set('content','home-02.html');
+	$view=new View;
+    echo $view->render('cart.html');
+});
+$f3->route('GET /about',function($f3){
+	// $f3->set('content','home-02.html');
+	$view=new View;
+    echo $view->render('about.html');
+});
+$f3->route('GET /contact',function($f3){
+	// $f3->set('content','home-02.html');
+	$view=new View;
+    echo $view->render('contact.html');
 });
 
 $f3->route('GET /userref',
@@ -89,10 +110,10 @@ $f3->route('GET /userref',
 	}
 );
 
-$f3->set("DB",new DB\SQL(
-    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-    'id7413042_bukantokosebelah',
-    'admin'
-));
+// $f3->set("DB",new DB\SQL(
+//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+//     'id7413042_bukantokosebelah',
+//     'admin'
+// ));
 
 $f3->run();
