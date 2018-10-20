@@ -10,101 +10,44 @@ if ((float)PCRE_VERSION<7.9)
 // Load configuration
 $f3->config('config.ini');
 
-// $f3->route('GET /',
-// 	function($f3) {
-// 		$classes=array(
-// 			'Base'=>
-// 				array(
-// 					'hash',
-// 					'json',
-// 					'session',
-// 					'mbstring'
-// 				),
-// 			'Cache'=>
-// 				array(
-// 					'apc',
-// 					'apcu',
-// 					'memcache',
-// 					'memcached',
-// 					'redis',
-// 					'wincache',
-// 					'xcache'
-// 				),
-// 			'DB\SQL'=>
-// 				array(
-// 					'pdo',
-// 					'pdo_dblib',
-// 					'pdo_mssql',
-// 					'pdo_mysql',
-// 					'pdo_odbc',
-// 					'pdo_pgsql',
-// 					'pdo_sqlite',
-// 					'pdo_sqlsrv'
-// 				),
-// 			'DB\Jig'=>
-// 				array('json'),
-// 			'DB\Mongo'=>
-// 				array(
-// 					'json',
-// 					'mongo'
-// 				),
-// 			'Auth'=>
-// 				array('ldap','pdo'),
-// 			'Bcrypt'=>
-// 				array(
-// 					'mcrypt',
-// 					'openssl'
-// 				),
-// 			'Image'=>
-// 				array('gd'),
-// 			'Lexicon'=>
-// 				array('iconv'),
-// 			'SMTP'=>
-// 				array('openssl'),
-// 			'Web'=>
-// 				array('curl','openssl','simplexml'),
-// 			'Web\Geo'=>
-// 				array('geoip','json'),
-// 			'Web\OpenID'=>
-// 				array('json','simplexml'),
-// 			'Web\Pingback'=>
-// 				array('dom','xmlrpc')
-// 		);
-// 		$f3->set('classes',$classes);
-// 		$f3->set('content','welcome.htm');
-// 		echo View::instance()->render('layout.htm');
-// 	}
-// );
-
 $f3->route('GET /',function($f3){
-	// $f3->set('content','home-02.html');
-	$result=$f3->get("DB")->exec(
-        'SELECT * FROM `Barang`'
-    );
-	var_dump($result);
 	$view=new View;
-    echo $view->render('home.html');
+    echo $view->render('pages/user/home.html');
 });
 
 $f3->route('GET /product',function($f3){
-	// $f3->set('content','home-02.html');
 	$view=new View;
-    echo $view->render('product.html');
+    echo $view->render('pages/user/product.html');
 });
 $f3->route('GET /cart',function($f3){
-	// $f3->set('content','home-02.html');
 	$view=new View;
-    echo $view->render('cart.html');
+    echo $view->render('pages/user/cart.html');
 });
 $f3->route('GET /about',function($f3){
-	// $f3->set('content','home-02.html');
 	$view=new View;
-    echo $view->render('about.html');
+    echo $view->render('pages/user/about.html');
 });
 $f3->route('GET /contact',function($f3){
-	// $f3->set('content','home-02.html');
 	$view=new View;
-    echo $view->render('contact.html');
+    echo $view->render('pages/user/contact.html');
+});
+
+$f3->route('GET /adminHome',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/adminhome.html');
+});
+
+$f3->route('GET /adminUser',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/user.html');
+});
+$f3->route('GET /adminPayment',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/payment.html');
+});
+$f3->route('GET /adminOrder',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/order.html');
 });
 
 $f3->route('GET /userref',
@@ -114,10 +57,18 @@ $f3->route('GET /userref',
 	}
 );
 
+//server
+// $f3->set("DB",new DB\SQL(
+//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+//     'id7413042_admin',
+//     'admin123'
+// ));
+
+//local
 $f3->set("DB",new DB\SQL(
-    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-    'id7413042_admin',
-    'admin123'
+    'mysql:host=localhost;port=3306;dbname=e-commerce',
+    'root',
+    ''
 ));
 
 $f3->run();

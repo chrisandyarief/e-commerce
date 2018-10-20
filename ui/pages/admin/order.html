@@ -7,69 +7,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Material Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="ui/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="ui/images/favicon.png" />
 </head>
 
 <body>
   <div class="body-wrapper">
-    <!-- partial:../../partials/_sidebar.html -->
+    <!-- partial:partials/_sidebar.html -->
     <aside class="mdc-persistent-drawer mdc-persistent-drawer--open">
       <nav class="mdc-persistent-drawer__drawer">
         <div class="mdc-persistent-drawer__toolbar-spacer">
-          <a href="../../index.html" class="brand-logo">
-						<img src="../../images/logo.svg" alt="logo">
+          <a href="index.html" class="brand-logo">
+						<img src="ui/images/logo.svg" alt="logo">
 					</a>
         </div>
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="../../index.html">
+              <a class="mdc-drawer-link" href="index.html">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">desktop_mac</i>
                 Dashboard
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="../../pages/forms/basic-forms.html">
+              <a class="mdc-drawer-link" href="pages/forms/basic-forms.html">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
-                Forms
+               Payment
               </a>
             </div>
-            <div class="mdc-list-item mdc-drawer-item" href="#" data-toggle="expansionPanel" target-panel="ui-sub-menu">
-              <a class="mdc-drawer-link" href="#">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                UI Features
-                <i class="mdc-drawer-arrow material-icons">arrow_drop_down</i>
-              </a>
-              <div class="mdc-expansion-panel" id="ui-sub-menu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/ui-features/buttons.html">
-                      Buttons
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/ui-features/typography.html">
-                      Typography
-                    </a>
-                  </div>
-                </nav>
-              </div>
-            </div>
+
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="../../pages/ui-features/tables.html">
+              <a class="mdc-drawer-link" href="pages/ui-features/tables.html">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
-                Tables
+                User
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="../../pages/charts/chartjs.html">
+              <a class="mdc-drawer-link" href="pages/charts/chartjs.html">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pie_chart_outlined</i>
                 Charts
               </a>
@@ -83,37 +63,37 @@
               <div class="mdc-expansion-panel" id="sample-page-submenu">
                 <nav class="mdc-list mdc-drawer-submenu">
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/blank-page.html">
+                    <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
                       Blank Page
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/403.html">
+                    <a class="mdc-drawer-link" href="pages/samples/403.html">
                       403
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/404.html">
+                    <a class="mdc-drawer-link" href="pages/samples/404.html">
                       404
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/500.html">
+                    <a class="mdc-drawer-link" href="pages/samples/500.html">
                       500
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/505.html">
+                    <a class="mdc-drawer-link" href="pages/samples/505.html">
                       505
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/login.html">
+                    <a class="mdc-drawer-link" href="pages/samples/login.html">
                       Login
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/register.html">
+                    <a class="mdc-drawer-link" href="pages/samples/register.html">
                       Register
                     </a>
                   </div>
@@ -121,17 +101,12 @@
                 </nav>
               </div>
             </div>
-            <div class="mdc-list-item mdc-drawer-item purchase-link">
-              <a href="https://www.bootstrapdash.com/product/material-admin/" target="_blank" class="mdc-button mdc-button--raised mdc-button--dense mdc-drawer-link" data-mdc-auto-init="MDCRipple">
-                Upgrade To Pro
-              </a>
-            </div>
           </nav>
         </div>
       </nav>
     </aside>
     <!-- partial -->
-    <!-- partial:../../partials/_navbar.html -->
+    <!-- partial:partials/_navbar.html -->
     <header class="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
@@ -190,11 +165,7 @@
         </section>
       </div>
     </header>
-    <!-- partial -->
-    <div class="page-wrapper mdc-toolbar-fixed-adjust">
-      <main class="content-wrapper">
-      </main>
-      <!-- partial:../../partials/_footer.html -->
+
       <footer>
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
@@ -212,16 +183,19 @@
   </div>
   <!-- body wrapper -->
   <!-- plugins:js -->
-  <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/material-components-web/dist/material-components-web.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
+  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="node_modules/progressbar.js/dist/progressbar.min.js"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-	<script src="../../js/misc.js"></script>
-	<script src="../../js/material.js"></script>
-	<!-- endinject -->
+  <script src="js/misc.js"></script>
+  <script src="js/material.js"></script>
+  <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
 
