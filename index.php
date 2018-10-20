@@ -36,6 +36,24 @@ $f3->route('GET /contact',function($f3){
     echo $view->render('pages/user/contact.html');
 });
 
+$f3->route('GET /adminHome',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/adminhome.html');
+});
+
+$f3->route('GET /adminUser',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/user.html');
+});
+$f3->route('GET /adminPayment',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/payment.html');
+});
+$f3->route('GET /adminOrder',function($f3){
+	$view=new View;
+    echo $view->render('pages/admin/order.html');
+});
+
 $f3->route('GET /userref',
 	function($f3) {
 		$f3->set('content','userref.htm');
