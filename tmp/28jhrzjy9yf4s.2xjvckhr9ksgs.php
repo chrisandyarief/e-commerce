@@ -466,6 +466,24 @@ Showing 1–12 of 16 results
 <div id="dropDownSelect2"></div>
 
 
+<div class="hidden" id="login-popup">
+	<div>
+		<h1>Login to Your Account</h1><br>
+		<form>
+			<input type="text" name="user" placeholder="Username"><br>
+			<input type="password" name="pass" placeholder="Password">
+			<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+			<input type="button" value="Cancel" class="cancel-login">
+		</form>
+
+		<div class="login-help">
+			<a href="#">Register</a> - <a href="#">Forgot Password</a>
+		</div>
+	</div>
+
+</div>
+
+
 
 <!--===============================================================================================-->
 <script type="text/javascript" src="ui/vendor/user/jquery/jquery-3.2.1.min.js"></script>
@@ -493,6 +511,9 @@ $(".selection-2").select2({
 <!--===============================================================================================-->
 <script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript">
+$('.cancel-login').click(function(){
+	$("#login-popup").addClass("hidden");
+})
 $('.block2-btn-addcart').click(function(){
 	var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
 	console.log(nameProduct);
@@ -502,7 +523,11 @@ $('.block2-btn-addcart').click(function(){
 			async : true,
 			data : nameProduct,
 			success : function(data){
-				swal(nameProduct, "is added to wishlist !");
+				if(data=="No User Active"){
+					$("#login-popup").removeClass("hidden");
+				}else{
+					swal(nameProduct, "is added to wishlist !");
+				}
 			}
 		});
 });
