@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home 02</title>
+	<title>HOME</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="ui/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ui//fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -17,19 +17,19 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ui/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/animate/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/slick/slick.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ui/vendor/lightbox2/css/lightbox.min.css">
+	<link rel="stylesheet" type="text/css" href="ui/vendor/user/lightbox2/css/lightbox.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ui/css/util.css">
 	<link rel="stylesheet" type="text/css" href="ui/css/main.css">
@@ -51,7 +51,7 @@
 
 				<!-- Logo2 -->
 				<a href="/" class="logo2">
-					<img src="ui/images/icons/logo.png" alt="IMG-LOGO">
+					<img src="/images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 				<div class="topbar-child2">
 					<span class="topbar-email">
@@ -187,7 +187,9 @@
 	</header>
 
 	<!-- Slide1 -->
-	{{array_barang}}
+	<!-- <repeat group="{{ @gambar }}" value="{{ @img }}">
+		<div><img src="{{@img}}"></div>
+	</repeat> -->
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -1177,239 +1179,12 @@
 		</div>
 	</section>
 
-
-	<!-- Banner video -->
-	<section class="parallax0 parallax100" style="background-image: url(images/bg-video-01.jpg);">
-		<div class="overlay0 p-t-190 p-b-200">
-			<div class="flex-col-c-m p-l-15 p-r-15">
-				<span class="m-text9 p-t-45 fs-20-sm">
-					The Beauty
-				</span>
-
-				<h3 class="l-text1 fs-35-sm">
-					Lookbook
-				</h3>
-
-				<span class="btn-play s-text4 hov5 cs-pointer p-t-25" data-toggle="modal" data-target="#modal-video-01">
-					<i class="fa fa-play" aria-hidden="true"></i>
-					Play Video
-				</span>
-			</div>
-		</div>
-	</section>
-
-	<!-- Blog -->
-	<section class="blog bgwhite p-t-94 p-b-65">
-		<div class="container">
-			<div class="sec-title p-b-52">
-				<h3 class="m-text5 t-center">
-					Our Blog
-				</h3>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-01.jpg" alt="IMG-BLOG">
-						</a>
-
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									Black Friday Guide: Best Sales & Discount Codes
-								</a>
-							</h4>
-
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-02.jpg" alt="IMG-BLOG">
-						</a>
-
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									The White Sneakers Nearly Every Fashion Girls Own
-								</a>
-							</h4>
-
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-03.jpg" alt="IMG-BLOG">
-						</a>
-
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									New York SS 2018 Street Style: Annina Mislin
-								</a>
-							</h4>
-
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Instagram -->
-	<section class="instagram p-t-20">
-		<div class="sec-title p-b-52 p-l-15 p-r-15">
-			<h3 class="m-text5 t-center">
-				@ follow us on Instagram
-			</h3>
-		</div>
-
-		<div class="flex-w">
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
-
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">
-							Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
-						</p>
-
-						<span class="s-text9">
-							Photo by @nancyward
-						</span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM">
-
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">
-							Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
-						</p>
-
-						<span class="s-text9">
-							Photo by @nancyward
-						</span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM">
-
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">
-							Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
-						</p>
-
-						<span class="s-text9">
-							Photo by @nancyward
-						</span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM">
-
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">
-							Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
-						</p>
-
-						<span class="s-text9">
-							Photo by @nancyward
-						</span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM">
-
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">
-							Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
-						</p>
-
-						<span class="s-text9">
-							Photo by @nancyward
-						</span>
-					</div>
-				</a>
-			</div>
-		</div>
-	</section>
-
 	<!-- Shipping -->
 	<section class="shipping bgwhite p-t-62 p-b-46">
 		<div class="flex-w p-l-15 p-r-15">
 			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
 				<h4 class="m-text12 t-center">
-					Free Delivery Worldwide
+					Cash On Delivery
 				</h4>
 
 				<a href="#" class="s-text11 t-center">
@@ -1566,7 +1341,7 @@
 
 				<form>
 					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@bukantokosbelah.com">
 						<span class="effect1-line"></span>
 					</div>
 
@@ -1583,28 +1358,24 @@
 
 		<div class="t-center p-l-15 p-r-15">
 			<a href="#">
-				<img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
+				<img class="h-size2" src="ui/images/icons/paypal.png" alt="IMG-PAYPAL">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
+				<img class="h-size2" src="ui/images/icons/visa.png" alt="IMG-VISA">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
+				<img class="h-size2" src="ui/images/icons/mastercard.png" alt="IMG-MASTERCARD">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
+				<img class="h-size2" src="ui/images/icons/express.png" alt="IMG-EXPRESS">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
+				<img class="h-size2" src="ui/images/icons/discover.png" alt="IMG-DISCOVER">
 			</a>
-
-			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-			</div>
 		</div>
 	</footer>
 
@@ -1620,30 +1391,15 @@
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
 
-	<!-- Modal Video 01-->
-	<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
-
-		<div class="modal-dialog" role="document" data-dismiss="modal">
-			<div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
-
-			<div class="wrap-video-mo-01">
-				<div class="w-full wrap-pic-w op-0-0"><img src="images/icons/video-16-9.jpg" alt="IMG"></div>
-				<div class="video-mo-01">
-					<iframe src="https://www.youtube.com/embed/Nt8ZrWY2Cmk?rel=0&amp;showinfo=0" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/animsition/js/animsition.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="ui/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/select2/select2.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/select2/select2.min.js"></script>
 	<script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch: 20,
@@ -1651,14 +1407,14 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/slick/slick.min.js"></script>
 	<script type="text/javascript" src="ui/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/countdowntime/countdowntime.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/lightbox2/js/lightbox.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/lightbox2/js/lightbox.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="ui/vendor/sweetalert/sweetalert.min.js"></script>
+	<script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		$('.block2-btn-addcart').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
