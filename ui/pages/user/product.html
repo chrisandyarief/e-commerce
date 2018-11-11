@@ -499,6 +499,9 @@ $('.block2-btn-addcart').click(function(){
 			async : true,
 			data : nameProduct,
 			success : function(data){
+				if (data == "No User Active") {
+
+				}
 				swal(nameProduct, "is added to wishlist !");
 			}
 		});
