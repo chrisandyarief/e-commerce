@@ -52,7 +52,6 @@ $f3->route('GET /',function($f3){
 	$f3->set('harga',$harga);
 	$f3->set('datacart',$barangCart);
 	echo \Template::instance()->render('pages/user/home.html');
-
 });
 
 $f3->route('GET /product',function($f3){
@@ -76,6 +75,11 @@ $f3->route('GET /contact',function($f3){
 	echo \Template::instance()->render('pages/user/contact.html');
 });
 //ajax routing
+$f3->route('POST /checkout',function($f3){
+	$dataCart = json_encode($_POST['data']);
+	$cart =  explode(',',$dataCart);
+});
+
 $f3->route('POST /addToCart',function($f3){
 	if (isset($_SESSION['username'])) {
 		$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';

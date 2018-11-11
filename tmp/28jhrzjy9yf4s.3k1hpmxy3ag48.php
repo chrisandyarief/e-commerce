@@ -106,9 +106,9 @@
 
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<button href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" id="checkout">
 										Check Out
-									</a>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -1394,6 +1394,20 @@
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+		$('#checkout').click(function(){
+			var cart = [];
+			<?php foreach (($datacart?:[]) as $barang): ?>
+				cart.push("<?= ($barang['name']) ?>")
+		    <?php endforeach; ?>
+			$.ajax({
+				url : "/e-commerce/checkout",
+				data : {data : cart},
+				type : "POST",
+				success : function(data){
+					console.log(data);
+				}
 			});
 		});
 	</script>
