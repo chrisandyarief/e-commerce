@@ -1355,6 +1355,19 @@
 		</span>
 	</div>
 
+	<div class="hidden" id="checkout-popup">
+		<div>
+			<h1>Select Your Payment Method</h1><br>
+			<form>
+				<input type="radio" name="payment_method" value="cc" id="cc" checked>Credit Card
+				<input type="radio" name="payment_method" value="paypal" id="paypal">Paypal
+				<input type="radio" name="payment_method" value="cod" id="cod">Cash On Delivery
+				<input type="button" id="nextCheckout" value="Next">
+			</form>
+		</div>
+
+	</div>
+
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
 
@@ -1396,20 +1409,37 @@
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
+
 		$('#checkout').click(function(){
+			console.log($(".header-cart"));
+			$(".header-cart").removeClass("show-header-dropdown");
+
+			$("#checkout-popup").removeClass("hidden");
+		});
+
+		$("#nextCheckout").click(function(event) {
 			var cart = [];
 			<?php foreach (($datacart?:[]) as $barang): ?>
 				cart.push("<?= ($barang['name']) ?>")
-		    <?php endforeach; ?>
-			$.ajax({
-				url : "/e-commerce/checkout",
-				data : {data : cart},
-				type : "POST",
-				success : function(data){
-					console.log(data);
+				<?php endforeach; ?>
+
+				var status;
+				if($("input[type=radio]:checked").val()!="cod"){
+					status="ok";
 				}
-			});
-		});
+				else{
+					status="pending";
+				}
+
+				$.ajax({
+					url : "e-commerce/checkout",
+					data : {data : cart, status : status},
+					type : "POST",
+					success : function(data){
+						console.log(data);
+					}
+				});
+		})
 	</script>
 
 <!--===============================================================================================-->

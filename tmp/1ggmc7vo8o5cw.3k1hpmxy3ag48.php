@@ -78,27 +78,30 @@
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<repeat group ="{{ @datacart }}" value="{{ @barang }}">
+								<?php foreach (($datacart?:[]) as $barang): ?>
 									<li class="header-cart-item">
 										<div class="header-cart-item-img">
-											<img src={{trim(@barang.image)}} alt="IMG">
+											<img src=<?= (trim($barang['image'])) ?> alt="IMG">
 										</div>
 
 										<div class="header-cart-item-txt">
 											<a href="#" class="header-cart-item-name">
-												{{trim(@barang.name)}}
+												<?= (trim($barang['name']))."
+" ?>
 											</a>
 
 											<span class="header-cart-item-info">
-												1 x {{trim(@barang.price)}}
+												1 x <?= (trim($barang['price']))."
+" ?>
 											</span>
 										</div>
 									</li>
-								</repeat>
+								<?php endforeach; ?>
 							</ul>
 
 							<div class="header-cart-total">
-								Total: {{trim(@harga)}}
+								Total: <?= (trim($harga))."
+" ?>
 							</div>
 
 							<div class="header-cart-buttons">
@@ -151,9 +154,9 @@
 	</header>
 
 	<!-- Slide1 -->
-	<!-- <repeat group="{{ @gambar }}" value="{{ @img }}">
-		<div><img src="{{@img}}"></div>
-	</repeat> -->
+	<!-- <?php foreach (($gambar?:[]) as $img): ?>
+		<div><img src="<?= ($img) ?>"></div>
+	<?php endforeach; ?> -->
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -1352,19 +1355,6 @@
 		</span>
 	</div>
 
-	<div class="hidden" id="checkout-popup">
-		<div>
-			<h1>Select Your Payment Method</h1><br>
-			<form>
-				<input type="radio" name="payment_method" value="cc" id="cc" checked>Credit Card
-				<input type="radio" name="payment_method" value="paypal" id="paypal">Paypal
-				<input type="radio" name="payment_method" value="cod" id="cod">Cash On Delivery
-				<input type="button" id="nextCheckout" value="Next">
-			</form>
-		</div>
-
-	</div>
-
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
 
@@ -1406,37 +1396,20 @@
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
-
 		$('#checkout').click(function(){
-			console.log($(".header-cart"));
-			$(".header-cart").removeClass("show-header-dropdown");
-
-			$("#checkout-popup").removeClass("hidden");
-		});
-
-		$("#nextCheckout").click(function(event) {
 			var cart = [];
-			<repeat group="{{ @datacart }}" value="{{ @barang }}">
-				cart.push("{{@barang.name}}")
-				</repeat>
-
-				var status;
-				if($("input[type=radio]:checked").val()!="cod"){
-					status="ok";
+			<?php foreach (($datacart?:[]) as $barang): ?>
+				cart.push("<?= ($barang['name']) ?>")
+		    <?php endforeach; ?>
+			$.ajax({
+				url : "TugasEcommerce/e-commerce/checkout",
+				data : {data : cart},
+				type : "POST",
+				success : function(data){
+					console.log(data);
 				}
-				else{
-					status="pending";
-				}
-
-				$.ajax({
-					url : "e-commerce/checkout",
-					data : {data : cart, status : status},
-					type : "POST",
-					success : function(data){
-						console.log(data);
-					}
-				});
-		})
+			});
+		});
 	</script>
 
 <!--===============================================================================================-->
