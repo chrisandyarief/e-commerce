@@ -25,6 +25,13 @@
 
     <!-- Custom Fonts -->
     <link href="ui/vendor/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Include one of jTable styles. -->
+    <link href="ui/js/themes/metro/blue/jtable.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include jTable script file. -->
+    <script src="ui/js/jquery.jtable.min.js" type="text/javascript"></script>
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,59 +77,42 @@
         </nav>
 
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Input Product</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-              <div class="col-md-8">
-          <div class="well well-sm">
-              <form>
-              <div class="row">
-                  <div class="col-md-6">
-                      <div class="form-group">
-                          <label for="name">
-                              Product Name</label>
-                          <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
-                      </div>
-
-                      <div class="form-group">
-                          <label for="quantity">
-                              Quantity</label>
-                          <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" required="required" />
-                      </div>
-
-                      <div class="form-group">
-                          <label for="filename">
-                              Filename</label>
-                              <input type="text" class="form-control" id="filename" placeholder="Enter filename" required="required" />
-                      </div>
-
-                      <div class="form-group">
-                          <label for="price">
-                              Price</label>
-                          <input type="number" class="form-control" id="price" placeholder="Enter Price" required="required" />
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-group">
-                          <label for="desc">
-                              Description</label>
-                          <textarea name="message" id="desc" class="form-control" rows="9" cols="25" required="required"
-                              placeholder="Enter Description"></textarea>
-                      </div>
-                  </div>
-                  <div class="col-md-12">
-                      <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
-                          Enter Product</button>
-                  </div>
-              </div>
-              </form>
-          </div>
-      </div>
+            <div id="PersonTableContainer"></div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#PersonTableContainer').jtable({
+                title: 'Table of people',
+                actions: {
+                    listAction: '/GettingStarted/PersonList',
+                    createAction: '/GettingStarted/CreatePerson',
+                    updateAction: '/GettingStarted/UpdatePerson',
+                    deleteAction: '/GettingStarted/DeletePerson'
+                },
+                fields: {
+                    PersonId: {
+                        key: true,
+                        list: false
+                    },
+                    Name: {
+                        title: 'Author Name',
+                        width: '40%'
+                    },
+                    Age: {
+                        title: 'Age',
+                        width: '20%'
+                    },
+                    RecordDate: {
+                        title: 'Record date',
+                        width: '30%',
+                        type: 'date',
+                        create: false,
+                        edit: false
+                    }
+                }
+            });
+        });
+        </script>
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -131,7 +121,8 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="ui/vendor/admin/jquery/jquery.min.js"></script>
+        <script src="ui/vendor/admin/jquery/jquery.min.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="ui/vendor/admin/bootstrap/js/bootstrap.min.js"></script>
@@ -146,6 +137,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../js/sb-admin-2.js"></script>
+
 
 </body>
 

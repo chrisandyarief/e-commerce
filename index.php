@@ -136,8 +136,8 @@ $f3->route('GET /adminUser',function($f3){
 $f3->route('GET /adminPayment',function($f3){
 	echo \Template::instance()->render('pages/admin/payment.html');
 });
-$f3->route('GET /adminOrder',function($f3){
-	echo \Template::instance()->render('pages/admin/order.html');
+$f3->route('GET /adminUser',function($f3){
+	echo \Template::instance()->render('pages/admin/user.html');
 });
 
 // server

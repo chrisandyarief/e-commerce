@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
+	<link rel="icon" type="images/png" href="ui/images/icontab.ico"/>
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="ui/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ui/vendor/user/bootstrap/css/bootstrap.min.css">
@@ -160,10 +162,10 @@
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/master-slide-07.jpg);">
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/bag2.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
-							Leather Bags
+							Casual Bags
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
@@ -172,7 +174,43 @@
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui//images/bag3.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
+							Teen Bags
+						</h2>
+
+						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
+							Comming Soon 2019
+						</span>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+							<!-- Button -->
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/bag4.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
+							Leather Bags
+						</h2>
+
+						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
+							Comming Soon 2019
+						</span>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+							<!-- Button -->
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>

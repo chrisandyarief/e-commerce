@@ -47,20 +47,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/adminhome">Admin</a>
+                <a class="navbar-brand" href="pages/admin/adminhome.html">Admin</a>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/adminhome"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/adminpayment"><i class="fa fa-money fa-fw"></i> Payment</a>
+                            <a href="payment.html"><i class="fa fa-money fa-fw"></i> Payment</a>
                         </li>
                         <li>
-                            <a href="/adminUser"><i class="fa fa-users fa-fw"></i> User</a>
+                            <a href="user.html"><i class="fa fa-users fa-fw"></i> User</a>
                         </li>
                     </ul>
                 </div>
