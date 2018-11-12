@@ -13,16 +13,20 @@ $f3->config('config.ini');
 
 //user interface routing
 $f3->route('GET /',function($f3){
-	$result=$f3->get("DB")->exec(
-        'SELECT `image` FROM `Barang`'
-    );
-	$array = array();
-	foreach ($result as $value) {
-		foreach ($value as $values) {
-			array_push($array,$values);
-		}
-	}
-	$f3->set('gambar',$array);
+	$sql1 = 'SELECT `image`, `name`, `price` FROM `barang` LIMIT 10';
+	$sql2 = 'SELECT `image`, `name`, `price` FROM `barang` LIMIT 10, 10';
+	$sql3 = 'SELECT `image`, `name`, `price` FROM `barang` LIMIT 20, 10';
+	$sql4 = 'SELECT `image`, `name`, `price` FROM `barang` LIMIT 30, 10';
+
+	$res1 = $f3->get("DB")->exec($sql1);
+	$res2 = $f3->get("DB")->exec($sql2);
+	$res3 = $f3->get("DB")->exec($sql3);
+	$res4 = $f3->get("DB")->exec($sql4);
+
+	$f3->set('bestSeller', $res1);
+	$f3->set('featured', $res2);
+	$f3->set('sale', $res3);
+	$f3->set('topRate', $res4);
 
 	$sql = 'SELECT `cart` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
 	$res = $f3->get("DB")->exec($sql);
