@@ -90,6 +90,11 @@ $f3->route('POST /addToCart',function($f3){
 	}
 });
 
+$f3->route('POST /checkoutCart', function($f3){
+	$sqlInsertData='INSERT INTO transaksi (id_barang, total, amount, status, time, buyer_id) VALUES ';
+	$f3->get("DB")->exec($sqlInsertData);
+});
+
 //admin routing
 $f3->route('GET /adminHome',function($f3){
 	echo \Template::instance()->render('pages/admin/adminhome.html');
