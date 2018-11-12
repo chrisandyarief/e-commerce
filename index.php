@@ -79,9 +79,52 @@ $f3->route('GET /contact',function($f3){
 	echo \Template::instance()->render('pages/user/contact.html');
 });
 //ajax routing
-$f3->route('POST /checkout',function($f3){
+function multiexplode ($delimiters,$string) {
+
+    $ready = str_replace($delimiters, $delimiters[0], $string);
+    $launch = explode($delimiters[0], $ready);
+    return  $launch;
+}
+$f3->route('POST /e-commerce/checkout',function($f3){
 	$dataCart = json_encode($_POST['data']);
-	$cart =  explode(',',$dataCart);
+	$cart =  multiexplode(array(',','[',']','"'),$dataCart);
+	foreach ($cart as $value) {
+		if ($value == "") {
+		}
+		else{
+			$sql = 'SELECT `price` from barang where `name` ="'."$value".'"';
+			$result=$f3->get("DB")->exec($sql);
+			$harga;
+			foreach ($result as $price) {
+				$harga = $price['price'];
+			}
+			$sql2 = 'SELECT `id` from barang where `name` ="'."$value".'"';
+			$result2=$f3->get("DB")->exec($sql2);
+			$id_barang;
+			foreach ($result2 as $idBarang) {
+				$id_barang = $idBarang['id'];
+			}
+			$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
+			$temp = $f3->get("DB")->exec($sqlFindId);
+			$tempId;
+			foreach ($temp as $idUser) {
+				$tempId = $idUser['id'];
+			}
+			if ($_POST['status'] == "pending") {
+				$status = 0;
+				$sqlInsertData='INSERT INTO transaksi (`id_barang`, `total`, `amount`, `status`, `time`, `buyer_id`) VALUES ("'.$id_barang.'", "'.$harga.'", "1", "'.$status.'",NOW(), "'.$tempId.'")';
+				$finalRes=$f3->get("DB")->exec($sqlInsertData);
+			}
+			else{
+				$status = 1;
+				$sqlInsertData='INSERT INTO transaksi (`id_barang`, `total`, `amount`, `status`, `time`, `buyer_id`) VALUES ("'.$id_barang.'", "'.$harga.'", "1", "'.$status.'",NOW(), "'.$tempId.'")';
+				$finalRes=$f3->get("DB")->exec($sqlInsertData);
+			}
+			$sqlDeleteCart = 'UPDATE `user` SET `cart`=NULL WHERE `username`="'.$_SESSION['username'].'"';
+			$f3->get("DB")->exec($sqlDeleteCart);
+		}
+	}
+	echo "success";
 });
 
 $f3->route('POST /addToCart',function($f3){

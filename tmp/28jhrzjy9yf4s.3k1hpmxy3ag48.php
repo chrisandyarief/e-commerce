@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
+	<link rel="icon" type="images/png" href="ui/images/icontab.ico"/>
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="ui/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ui/vendor/user/bootstrap/css/bootstrap.min.css">
@@ -51,7 +53,7 @@
 
 				<!-- Logo2 -->
 				<a href="/" class="logo2">
-					<img src="/images/icons/logo.png" alt="IMG-LOGO">
+					<img src="ui/images/logo3.png" alt="IMG-LOGO">
 				</a>
 				<div class="topbar-child2">
 					<span class="topbar-email">
@@ -160,10 +162,10 @@
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/2.jpg);">
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/bag2.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
-							Leather Bags
+							Casual Bags
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
@@ -172,25 +174,43 @@
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/2.jpg);">
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui//images/bag3.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
+							Teen Bags
+						</h2>
+
+						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
+							Comming Soon 2019
+						</span>
+
+						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+							<!-- Button -->
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+								Shop Now
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="item-slick1 item1-slick1" style="background-image: url(ui/images/bag4.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22" data-appear="fadeInUp">
 							Leather Bags
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-							New Collection 2018
+							Comming Soon 2019
 						</span>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>
@@ -341,7 +361,7 @@
 											</a>
 
 											<span class="block2-price m-text6 p-r-5">
-												IDR <?= (trim($barangTop['price']))."
+												IDR <?= (trim($barangSale['price']))."
 " ?>
 											</span>
 										</div>
@@ -604,6 +624,19 @@
 		</span>
 	</div>
 
+	<div class="hidden" id="checkout-popup">
+		<div>
+			<h1>Select Your Payment Method</h1><br>
+			<form>
+				<input type="radio" name="payment_method" value="cc" id="cc" checked>Credit Card
+				<input type="radio" name="payment_method" value="paypal" id="paypal">Paypal
+				<input type="radio" name="payment_method" value="cod" id="cod">Cash On Delivery
+				<input type="button" id="nextCheckout" value="Next">
+			</form>
+		</div>
+
+	</div>
+
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
 
@@ -645,20 +678,42 @@
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
+
 		$('#checkout').click(function(){
+			console.log($(".header-cart"));
+			$(".header-cart").removeClass("show-header-dropdown");
+
+			$("#checkout-popup").removeClass("hidden");
+		});
+
+		$("#nextCheckout").click(function(event) {
 			var cart = [];
 			<?php foreach (($datacart?:[]) as $barang): ?>
 				cart.push("<?= ($barang['name']) ?>")
-		    <?php endforeach; ?>
-			$.ajax({
-				url : "/e-commerce/checkout",
-				data : {data : cart},
-				type : "POST",
-				success : function(data){
-					console.log(data);
+				<?php endforeach; ?>
+
+				var status;
+				if($("input[type=radio]:checked").val()!="cod"){
+					status="ok";
 				}
-			});
-		});
+				else{
+					status="pending";
+				}
+
+				$.ajax({
+					url : "e-commerce/checkout",
+					data : {data : cart, status : status},
+					type : "POST",
+					success : function(data){
+						if (data == "success") {
+							location.reload();
+						}
+						else{
+							swal("Try Diffrent Method");
+						}
+					}
+				});
+		})
 	</script>
 
 <!--===============================================================================================-->
