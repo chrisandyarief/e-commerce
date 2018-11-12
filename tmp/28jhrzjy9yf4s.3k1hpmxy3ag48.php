@@ -78,27 +78,30 @@
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<repeat group ="{{ @datacart }}" value="{{ @barang }}">
+								<?php foreach (($datacart?:[]) as $barang): ?>
 									<li class="header-cart-item">
 										<div class="header-cart-item-img">
-											<img src={{trim(@barang.image)}} alt="IMG">
+											<img src=<?= (trim($barang['image'])) ?> alt="IMG">
 										</div>
 
 										<div class="header-cart-item-txt">
 											<a href="#" class="header-cart-item-name">
-												{{trim(@barang.name)}}
+												<?= (trim($barang['name']))."
+" ?>
 											</a>
 
 											<span class="header-cart-item-info">
-												1 x {{trim(@barang.price)}}
+												1 x <?= (trim($barang['price']))."
+" ?>
 											</span>
 										</div>
 									</li>
-								</repeat>
+								<?php endforeach; ?>
 							</ul>
 
 							<div class="header-cart-total">
-								Total: {{trim(@harga)}}
+								Total: <?= (trim($harga))."
+" ?>
 							</div>
 
 							<div class="header-cart-buttons">
@@ -151,9 +154,9 @@
 	</header>
 
 	<!-- Slide1 -->
-	<!-- <repeat group="{{ @gambar }}" value="{{ @img }}">
-		<div><img src="{{@img}}"></div>
-	</repeat> -->
+	<!-- <?php foreach (($gambar?:[]) as $img): ?>
+		<div><img src="<?= ($img) ?>"></div>
+	<?php endforeach; ?> -->
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -1395,9 +1398,9 @@
 		});
 		$('#checkout').click(function(){
 			var cart = [];
-			<repeat group="{{ @datacart }}" value="{{ @barang }}">
-				cart.push("{{@barang.name}}")
-		    </repeat>
+			<?php foreach (($datacart?:[]) as $barang): ?>
+				cart.push("<?= ($barang['name']) ?>")
+		    <?php endforeach; ?>
 			$.ajax({
 				url : "/e-commerce/checkout",
 				data : {data : cart},

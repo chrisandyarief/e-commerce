@@ -230,11 +230,11 @@ Showing 1–12 of 16 results
 
 <!-- Product -->
 <div class="row">
-	<repeat group="{{ @dataproduct }}" value="{{ @img }}">
+	<?php foreach (($dataproduct?:[]) as $img): ?>
 		<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 			<div class="block2">
 				<div class="block2-img wrap-pic-w of-hidden pos-relative">
-					<img src={{trim(@img.image)}} alt="IMG-PRODUCT">
+					<img src=<?= (trim($img['image'])) ?> alt="IMG-PRODUCT">
 
 					<div class="block2-overlay trans-0-4">
 						<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -253,19 +253,22 @@ Showing 1–12 of 16 results
 
 				<div class="block2-txt p-t-20">
 					<span class="block2-name dis-block s-text3 p-b-5">
-						{{trim(@img.name)}}
+						<?= (trim($img['name']))."
+" ?>
 					</span>
 					<span>
-						{{trim(@img.description)}}
+						<?= (trim($img['description']))."
+" ?>
 					</span>
 				</br>
 					<span class="block2-price m-text6 p-r-5">
-						 IDR {{trim(@img.price)}}
+						 IDR <?= (trim($img['price']))."
+" ?>
 					</span>
 				</div>
 			</div>
 		</div>
-	</repeat>
+	<?php endforeach; ?>
 </div>
 </div>
 </div>
@@ -520,10 +523,18 @@ $('.block2-btn-addcart').click(function(){
 			async : true,
 			data : nameProduct,
 			success : function(data){
+<<<<<<< HEAD
 				if (data == "No User Active") {
 
 				}
 				swal(nameProduct, "is added to wishlist !");
+=======
+				if(data=="No User Active"){
+					$("#login-popup").removeClass("hidden");
+				}else{
+					swal(nameProduct, "is added to wishlist !");
+				}
+>>>>>>> 4ff963fb815e354c25206dd614eedc97b4e26b3a
 			}
 		});
 });
