@@ -25,12 +25,6 @@
 
     <!-- Custom Fonts -->
     <link href="ui/vendor/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Include one of jTable styles. -->
-    <link href="ui/js/themes/metro/blue/jtable.min.css" rel="stylesheet" type="text/css" />
-    <link href="ui/vendor/admin/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-
-
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,20 +47,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/adminhome">Admin</a>
+                <a class="navbar-brand" href="pages/admin/adminhome.html">Admin</a>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/adminhome"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/adminpayment"><i class="fa fa-money fa-fw"></i> Payment</a>
+                            <a href="payment.html"><i class="fa fa-money fa-fw"></i> Payment</a>
                         </li>
                         <li>
-                            <a href="/adminUser"><i class="fa fa-users fa-fw"></i> User</a>
+                            <a href="user.html"><i class="fa fa-users fa-fw"></i> User</a>
                         </li>
                     </ul>
                 </div>
@@ -76,8 +70,59 @@
         </nav>
 
         <div id="page-wrapper">
-            <div id="PersonTableContainer"></div>
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Input Product</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-md-8">
+          <div class="well well-sm">
+              <form>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="name">
+                              Product Name</label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                      </div>
+
+                      <div class="form-group">
+                          <label for="quantity">
+                              Quantity</label>
+                          <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" required="required" />
+                      </div>
+
+                      <div class="form-group">
+                          <label for="filename">
+                              Filename</label>
+                              <input type="text" class="form-control" id="filename" placeholder="Enter filename" required="required" />
+                      </div>
+
+                      <div class="form-group">
+                          <label for="price">
+                              Price</label>
+                          <input type="number" class="form-control" id="price" placeholder="Enter Price" required="required" />
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="desc">
+                              Description</label>
+                          <textarea name="message" id="desc" class="form-control" rows="9" cols="25" required="required"
+                              placeholder="Enter Description"></textarea>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                          Enter Product</button>
+                  </div>
+              </div>
+              </form>
+          </div>
+      </div>
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -85,51 +130,8 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Include jTable script file. -->
-    <script src="ui/vendor/admin/jquery/jquery.min.js"></script>
-    <script src="ui/vendor/admin/jqueryui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="ui/js/jquery.jtable.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-        $('#PersonTableContainer').jtable({
-            title: 'Table of people',
-            actions: {
-                listAction: '/e-commerce/listUser',
-                deleteAction: '/GettingStarted/DeletePerson'
-            },
-            fields: {
-                id : {
-                    title : 'Id',
-                    width : '10%'
-                },
-                username: {
-                    title: 'Username',
-                    width: '10%'
-                },
-                email: {
-                    title: 'Email',
-                    width: '20%'
-                },
-                phonenumber: {
-                    title: 'Phone Number',
-                    width: '20%'
-                },
-                address: {
-                    title: 'Address',
-                    width: '20%'
-                },
-                cart: {
-                    title: 'Cart',
-                    width: '20%'
-                }
-            }
-        });
-        $('#PersonTableContainer').jtable('load');
-    });
-    </script>
     <!-- jQuery -->
-
-
+    <script src="ui/vendor/admin/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="ui/vendor/admin/bootstrap/js/bootstrap.min.js"></script>
@@ -144,7 +146,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../js/sb-admin-2.js"></script>
-
 
 </body>
 
