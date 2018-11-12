@@ -76,7 +76,7 @@
         </nav>
 
         <div id="page-wrapper">
-            <div id="PersonTableContainer"></div>
+            <div id="userContainer"></div>
         </div>
             </div>
         </div>
@@ -91,10 +91,10 @@
     <script src="ui/js/jquery.jtable.min.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-        $('#PersonTableContainer').jtable({
+        $('#userContainer').jtable({
             title: 'Table of people',
             actions: {
-                listAction: '/e-commerce/listUser',
+                listAction: '/listUser',
                 deleteAction: '/GettingStarted/DeletePerson'
             },
             fields: {
@@ -124,7 +124,7 @@
                 }
             }
         });
-        $('#PersonTableContainer').jtable('load');
+        $('#userContainer').jtable('load');
     });
     </script>
     <!-- jQuery -->

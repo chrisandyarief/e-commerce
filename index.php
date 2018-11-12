@@ -37,10 +37,10 @@ $f3->route('GET /',function($f3){
 	$hargaCart = array();
 	foreach ($res as $value) {
 		$barang=$f3->get("DB")->exec(
-	        'SELECT `image`,`name`,`price` FROM `Barang` WHERE `id` ="'.$value.'"'
+	        'SELECT `image`,`name`,`price` FROM `barang` WHERE `id` ="'.$value.'"'
 	    );
 		$harga=$f3->get("DB")->exec(
-	        'SELECT `price` FROM `Barang` WHERE `id` ="'.$value.'"'
+	        'SELECT `price` FROM `barang` WHERE `id` ="'.$value.'"'
 	    );
 		foreach ($harga as $value) {
 			foreach ($value as $key => $values) {
@@ -85,7 +85,7 @@ function multiexplode ($delimiters,$string) {
     $launch = explode($delimiters[0], $ready);
     return  $launch;
 }
-$f3->route('POST /e-commerce/checkout',function($f3){
+$f3->route('POST /checkout',function($f3){
 	$dataCart = json_encode($_POST['data']);
 	$cart =  multiexplode(array(',','[',']','"'),$dataCart);
 	foreach ($cart as $value) {
@@ -215,17 +215,17 @@ $f3->route('GET /adminUser',function($f3){
 });
 
 // server
-// $f3->set("DB",new DB\SQL(
-//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-//     'id7413042_admin',
-//     'admin123'
-// ));
+$f3->set("DB",new DB\SQL(
+    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+    'id7413042_admin',
+    'admin123'
+));
 
 // //local
-$f3->set("DB",new DB\SQL(
-    'mysql:host=localhost;port=3306;dbname=e-commerce',
-    'root',
-    ''
-));
+// $f3->set("DB",new DB\SQL(
+//     'mysql:host=localhost;port=3306;dbname=e-commerce',
+//     'root',
+//     ''
+// ));
 
 $f3->run();

@@ -152,10 +152,6 @@
 		</div>
 	</header>
 
-	<!-- Slide1 -->
-	<!-- <repeat group="{{ @gambar }}" value="{{ @img }}">
-		<div><img src="{{@img}}"></div>
-	</repeat> -->
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -184,7 +180,7 @@
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-							Comming Soon 2019
+							Coming Soon 2019
 						</span>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -202,7 +198,7 @@
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-							Comming Soon 2019
+							Coming Soon 2019
 						</span>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -450,7 +446,7 @@
 
 				<div>
 					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						Any questions? Let us know in store at 123 Ciumbuleuit, Bandung, West Java or email us on email@bukatokosebelah.com
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -566,7 +562,7 @@
 
 				<form>
 					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@bukantokosbelah.com">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@bukantokosebelah.com">
 						<span class="effect1-line"></span>
 					</div>
 
@@ -617,9 +613,9 @@
 		<div>
 			<h1>Select Your Payment Method</h1><br>
 			<form>
-				<input type="radio" name="payment_method" value="cc" id="cc" checked>Credit Card
-				<input type="radio" name="payment_method" value="paypal" id="paypal">Paypal
-				<input type="radio" name="payment_method" value="cod" id="cod">Cash On Delivery
+				<input type="radio" name="payment_method" value="cc" id="cc" checked><img src="ui/images/icons/visa.png">
+				<input type="radio" name="payment_method" value="paypal" id="paypal"><img src="ui/images/icons/paypal.png">
+				<input type="radio" name="payment_method" value="cod" id="cod"><img src="ui/images/icons/express.png">
 				<input type="button" id="nextCheckout" value="Next">
 			</form>
 		</div>
@@ -690,7 +686,7 @@
 				}
 
 				$.ajax({
-					url : "e-commerce/checkout",
+					url : "/checkout",
 					data : {data : cart, status : status},
 					type : "POST",
 					success : function(data){
