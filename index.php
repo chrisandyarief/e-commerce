@@ -54,6 +54,7 @@ $f3->route('GET /',function($f3){
 	$harga = array_sum($hargaCart);
 	$harga = "IDR ".number_format($harga,2,',','.');
 	$f3->set('harga',$harga);
+	$f3->set('amount',count($barangCart));
 	$f3->set('datacart',$barangCart);
 	echo \Template::instance()->render('pages/user/home.html');
 });
@@ -69,15 +70,6 @@ $f3->route('GET /product',function($f3){
 	$f3->set('dataproduct',$array);
 	echo \Template::instance()->render('pages/user/product.html');
 });
-// $f3->route('GET /cart',function($f3){
-// 	echo \Template::instance()->render('pages/user/cart.html');
-// });
-$f3->route('GET /about',function($f3){
-	echo \Template::instance()->render('pages/user/about.html');
-});
-$f3->route('GET /contact',function($f3){
-	echo \Template::instance()->render('pages/user/contact.html');
-});
 //ajax routing
 function multiexplode ($delimiters,$string) {
 
@@ -85,6 +77,7 @@ function multiexplode ($delimiters,$string) {
     $launch = explode($delimiters[0], $ready);
     return  $launch;
 }
+
 $f3->route('POST /checkout',function($f3){
 	$dataCart = json_encode($_POST['data']);
 	$cart =  multiexplode(array(',','[',']','"'),$dataCart);

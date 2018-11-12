@@ -75,7 +75,7 @@
 
 					<div class="header-wrapicon2 m-r-13">
 						<img src="ui/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+						<span class="header-icons-noti">{{@amount}}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
@@ -127,18 +127,6 @@
 
 							<li>
 								<a href="/product">Shop</a>
-							</li>
-
-							<li>
-								<a href="/cart">Cart</a>
-							</li>
-
-							<li>
-								<a href="/about">About</a>
-							</li>
-
-							<li>
-								<a href="/contact">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -650,13 +638,22 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
+		$('.block2-btn-addcart').click(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
+			console.log(nameProduct);
+				$.ajax({
+					url : "/addToCart",
+					type : "POST",
+					async : true,
+					data : nameProduct,
+					success : function(data){
+						if (data == "No User Active") {
 
+						}
+						swal(nameProduct, "is added to wishlist !");
+					}
+				});
+		});
 		$('.block2-btn-addwishlist').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
 			$(this).on('click', function(){
@@ -691,6 +688,7 @@
 					type : "POST",
 					success : function(data){
 						if (data == "success") {
+							swal("Transaction Success");
 							location.reload();
 						}
 						else{
