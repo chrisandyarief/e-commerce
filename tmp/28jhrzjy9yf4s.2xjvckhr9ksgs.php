@@ -523,11 +523,18 @@ $('.block2-btn-addcart').click(function(){
 			async : true,
 			data : nameProduct,
 			success : function(data){
+<<<<<<< HEAD
+				if (data == "No User Active") {
+
+				}
+				swal(nameProduct, "is added to wishlist !");
+=======
 				if(data=="No User Active"){
 					$("#login-popup").removeClass("hidden");
 				}else{
 					swal(nameProduct, "is added to wishlist !");
 				}
+>>>>>>> 4ff963fb815e354c25206dd614eedc97b4e26b3a
 			}
 		});
 });

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['username'] = 'chrisandyarief';
 // Kickstart the framework
 $f3=require('lib/base.php');
 
@@ -22,12 +23,38 @@ $f3->route('GET /',function($f3){
 		}
 	}
 	$f3->set('gambar',$array);
+
+	$sql = 'SELECT `cart` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
+	$res = $f3->get("DB")->exec($sql);
+	foreach ($res as $value) {
+		$res = explode(',',$value['cart']);
+	}
+	$barangCart = array();
+	$hargaCart = array();
+	foreach ($res as $value) {
+		$barang=$f3->get("DB")->exec(
+	        'SELECT `image`,`name`,`price` FROM `Barang` WHERE `id` ="'.$value.'"'
+	    );
+		$harga=$f3->get("DB")->exec(
+	        'SELECT `price` FROM `Barang` WHERE `id` ="'.$value.'"'
+	    );
+		foreach ($harga as $value) {
+			foreach ($value as $key => $values) {
+				array_push($hargaCart,(int)$values);
+			}
+		}
+		foreach ($barang as $value) {
+			array_push($barangCart,$value);
+		}
+	}
+	$harga = array_sum($hargaCart);
+	$harga = "Rp ".number_format($harga,2,',','.');
+	$f3->set('harga',$harga);
+	$f3->set('datacart',$barangCart);
 	echo \Template::instance()->render('pages/user/home.html');
 });
 
 $f3->route('GET /product',function($f3){
-	$_SESSION['username'] = "chrisandyarief";
-	var_dump($_SESSION['username']);
 	$result=$f3->get("DB")->exec(
         'SELECT `name`,`image`,`description`,`price` FROM `barang`'
     );
@@ -48,6 +75,11 @@ $f3->route('GET /contact',function($f3){
 	echo \Template::instance()->render('pages/user/contact.html');
 });
 //ajax routing
+$f3->route('POST /checkout',function($f3){
+	$dataCart = json_encode($_POST['data']);
+	$cart =  explode(',',$dataCart);
+});
+
 $f3->route('POST /addToCart',function($f3){
 	if (isset($_SESSION['username'])) {
 		$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
@@ -69,7 +101,6 @@ $f3->route('POST /addToCart',function($f3){
 		foreach ($tempCart as $value) {
 			$tmpCart = $value['cart'];
 		}
-		var_dump($tmpCart);
 		$sql = 'SELECT `id` from barang where `name` ="'."$productName".'"';
 		$result=$f3->get("DB")->exec($sql);
 		$tmp;
