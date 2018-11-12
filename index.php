@@ -52,7 +52,7 @@ $f3->route('GET /',function($f3){
 		}
 	}
 	$harga = array_sum($hargaCart);
-	$harga = "Rp ".number_format($harga,2,',','.');
+	$harga = "IDR ".number_format($harga,2,',','.');
 	$f3->set('harga',$harga);
 	$f3->set('datacart',$barangCart);
 	echo \Template::instance()->render('pages/user/home.html');
