@@ -79,9 +79,33 @@ $f3->route('GET /contact',function($f3){
 	echo \Template::instance()->render('pages/user/contact.html');
 });
 //ajax routing
-$f3->route('POST /checkout',function($f3){
+$f3->route('POST /e-commerce/checkout',function($f3){
 	$dataCart = json_encode($_POST['data']);
 	$cart =  explode(',',$dataCart);
+	foreach ($cart as $key => $value) {
+		$sql = 'SELECT `price` from barang where `name` ="'."$value".'"';
+		$result=$f3->get("DB")->exec($sql);
+		$harga;
+		foreach ($result as $value) {
+			$harga = $value['id'];
+		}
+		$sql2 = 'SELECT `id` from barang where `name` ="'."$value".'"';
+		$result2=$f3->get("DB")->exec($sql2);
+		$id_barang;
+		foreach ($result as $value) {
+			$id_barang = $value['id'];
+		}
+		$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
+		$temp = $f3->get("DB")->exec($sqlFindId);
+		$tempId;
+		foreach ($temp as $value) {
+			$tempId = $value['id'];
+		}
+		$status=$_POST['status'];
+		$sqlInsertData='INSERT INTO transaksi (`id_barang`, `total`, `amount`, `status`, `time`, `buyer_id`) VALUES ("'.$id_barang.'", "'.$harga.'", "1", "'.$status.'", "'.$date.'", "'.$tempId.'")';
+		$finalRes=$f3->get("DB")->exec($sqlInsertData);
+		echo $finalRes;
+	}
 });
 
 $f3->route('POST /addToCart',function($f3){
