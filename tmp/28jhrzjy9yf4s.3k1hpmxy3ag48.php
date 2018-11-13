@@ -44,11 +44,8 @@
 		<div class="container-menu-header-v2 p-t-26">
 			<div class="topbar2">
 				<div class="topbar-social">
-					<a href="#" class="topbar-social-item fa fa-facebook"></a>
-					<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+					<button class="btn btn-primary" id="signup">SIGNUP</button>
+					<button class="btn btn-primary" id="login">LOGIN</button>
 				</div>
 
 				<!-- Logo2 -->
@@ -75,7 +72,7 @@
 
 					<div class="header-wrapicon2 m-r-13">
 						<img src="ui/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+						<span class="header-icons-noti"><?= ($amount) ?></span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
@@ -131,18 +128,6 @@
 							<li>
 								<a href="/product">Shop</a>
 							</li>
-
-							<li>
-								<a href="/cart">Cart</a>
-							</li>
-
-							<li>
-								<a href="/about">About</a>
-							</li>
-
-							<li>
-								<a href="/contact">Contact</a>
-							</li>
 						</ul>
 					</nav>
 				</div>
@@ -155,10 +140,6 @@
 		</div>
 	</header>
 
-	<!-- Slide1 -->
-	<!-- <?php foreach (($gambar?:[]) as $img): ?>
-		<div><img src="<?= ($img) ?>"></div>
-	<?php endforeach; ?> -->
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -187,7 +168,7 @@
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-							Comming Soon 2019
+							Coming Soon 2019
 						</span>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -205,7 +186,7 @@
 						</h2>
 
 						<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-							Comming Soon 2019
+							Coming Soon 2019
 						</span>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -461,7 +442,7 @@
 
 				<div>
 					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						Any questions? Let us know in store at 123 Ciumbuleuit, Bandung, West Java or email us on email@bukatokosebelah.com
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -577,7 +558,7 @@
 
 				<form>
 					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@bukantokosbelah.com">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@bukantokosebelah.com">
 						<span class="effect1-line"></span>
 					</div>
 
@@ -628,9 +609,9 @@
 		<div>
 			<h1>Select Your Payment Method</h1><br>
 			<form>
-				<input type="radio" name="payment_method" value="cc" id="cc" checked>Credit Card
-				<input type="radio" name="payment_method" value="paypal" id="paypal">Paypal
-				<input type="radio" name="payment_method" value="cod" id="cod">Cash On Delivery
+				<input type="radio" name="payment_method" value="cc" id="cc" checked><img src="ui/images/icons/visa.png">
+				<input type="radio" name="payment_method" value="paypal" id="paypal"><img src="ui/images/icons/paypal.png">
+				<input type="radio" name="payment_method" value="cod" id="cod"><img src="ui/images/icons/express.png">
 				<input type="button" id="nextCheckout" value="Next">
 			</form>
 		</div>
@@ -638,7 +619,50 @@
 	</div>
 
 	<!-- Container Selection1 -->
-	<div id="dropDownSelect1"></div>
+	<div class="hidden" id="signup-popup">
+		<div>
+			<h1 class="s-text12 p-b-30">Create Your Account</h1><br>
+			<form id="form_signup" action="/e-commerce/signup">
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="signup-username" placeholder="Username" name="username" >
+			  </div>
+			  <div class="form-group">
+			    <input type="password" class="form-control" id="signup-password" placeholder="Password" name="password">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="email" placeholder="E-mail" name="email">
+			  </div>
+			  <div class="form-group">
+			    <input type="number" class="form-control" id="phone" placeholder="Phone Number" name="phonenumber">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+			  </div>
+			  <input type="submit" class="btn btn-primary">
+			  <input type="button" class="btn btn-primary" value="Cancel" id="cancel-signup">
+			</form>
+			<div class="login-help">
+				<button class="btn btn-primary">Have an Account?</button></br>
+			</div>
+		</div>
+	</div>
+
+	<div class="hidden" id="login-popup">
+		<div>
+			<h1 class="s-text7">Login to Your Account</h1><br>
+			<form>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="login-username" placeholder="Username" name="username" >
+			  </div>
+			  <div class="form-group">
+			    <input type="password" class="form-control" id="login-password" placeholder="Password" name="password">
+			  </div>
+			  <input type="submit" class="btn btn-primary">
+			  <input type="button" class="btn btn-primary" value="Cancel" id="cancel">
+			</form>
+		</div>
+	</div>
+
 
 <!--===============================================================================================-->
 	<script type="text/javascript" src="ui/vendor/user/jquery/jquery-3.2.1.min.js"></script>
@@ -665,13 +689,50 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
+	$(document).ready(function($){
+		$('#form_signup').submit(function(e){
+			e.preventDefault();
+			var form = $(this);
+			var url = form.attr('action');
+			console.log(form.serialize());
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : form.serialize(),
+				success : function(data){
+					console.log("error");
+				}
 			});
 		});
-
+		$('#login').click(function(){
+			$('#login-popup').removeClass("hidden");
+		})
+		$('#signup').click(function(){
+			$('#signup-popup').removeClass("hidden");
+		})
+		$('#cancel').click(function(){
+			$('#login-popup').addClass("hidden");
+		})
+		$('#cancel-signup').click(function(){
+			$('#signup-popup').addClass("hidden");
+		})
+		$('.block2-btn-addcart').click(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+				$.ajax({
+					url : "/e-commerce/addToCart",
+					type : "POST",
+					async : true,
+					data : nameProduct,
+					success : function(data){
+						if (data == "No User Active") {
+							swal("Please Login First :)");
+						}
+						else{
+							swal(nameProduct, "is added to Cart !");
+						}
+					}
+				});
+		});
 		$('.block2-btn-addwishlist').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
 			$(this).on('click', function(){
@@ -701,11 +762,12 @@
 				}
 
 				$.ajax({
-					url : "e-commerce/checkout",
+					url : "/checkout",
 					data : {data : cart, status : status},
 					type : "POST",
 					success : function(data){
 						if (data == "success") {
+							swal("Transaction Success");
 							location.reload();
 						}
 						else{
@@ -714,6 +776,7 @@
 					}
 				});
 		})
+	});
 	</script>
 
 <!--===============================================================================================-->

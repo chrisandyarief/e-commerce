@@ -44,11 +44,8 @@
 		<div class="container-menu-header-v2 p-t-26">
 			<div class="topbar2">
 				<div class="topbar-social">
-					<a href="#" class="topbar-social-item fa fa-facebook"></a>
-					<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+					<button class="btn btn-primary" id="signup">SIGNUP</button>
+					<button class="btn btn-primary" id="login">LOGIN</button>
 				</div>
 
 				<!-- Logo2 -->
@@ -611,7 +608,50 @@
 	</div>
 
 	<!-- Container Selection1 -->
-	<div id="dropDownSelect1"></div>
+	<div class="hidden" id="signup-popup">
+		<div>
+			<h1 class="s-text12 p-b-30">Create Your Account</h1><br>
+			<form id="form_signup" action="/e-commerce/signup">
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="signup-username" placeholder="Username" name="username" >
+			  </div>
+			  <div class="form-group">
+			    <input type="password" class="form-control" id="signup-password" placeholder="Password" name="password">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="email" placeholder="E-mail" name="email">
+			  </div>
+			  <div class="form-group">
+			    <input type="number" class="form-control" id="phone" placeholder="Phone Number" name="phonenumber">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+			  </div>
+			  <input type="submit" class="btn btn-primary">
+			  <input type="button" class="btn btn-primary" value="Cancel" id="cancel-signup">
+			</form>
+			<div class="login-help">
+				<button class="btn btn-primary">Have an Account?</button></br>
+			</div>
+		</div>
+	</div>
+
+	<div class="hidden" id="login-popup">
+		<div>
+			<h1 class="s-text7">Login to Your Account</h1><br>
+			<form id="form_login" action="/e-commerce/login">
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="login-username" placeholder="Username" name="username" >
+			  </div>
+			  <div class="form-group">
+			    <input type="password" class="form-control" id="login-password" placeholder="Password" name="password">
+			  </div>
+			  <input type="submit" class="btn btn-primary">
+			  <input type="button" class="btn btn-primary" value="Cancel" id="cancel">
+			</form>
+		</div>
+	</div>
+
 
 <!--===============================================================================================-->
 	<script type="text/javascript" src="ui/vendor/user/jquery/jquery-3.2.1.min.js"></script>
@@ -638,19 +678,73 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
+	$(document).ready(function($){
+		$('#form_signup').submit(function(e){
+			e.preventDefault();
+			var form = $(this);
+			var url = form.attr('action');
+			console.log(form.serialize());
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : form.serialize(),
+				success : function(data){
+					if (data == "success") {
+						swal("Sign Up Complete :)");
+						location.reload();
+					}
+					else{
+						swal("ERROR!");
+					}
+				}
+			});
+		});
+		$('#form_login').submit(function(e){
+			e.preventDefault();
+			var form = $(this);
+			var url = form.attr('action');
+			console.log(form.serialize());
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : form.serialize(),
+				success : function(data){
+					if (data == "success") {
+						swal("Login Complete :)");
+						location.reload();
+					}
+					else{
+						swal("ERROR!");
+					}
+				}
+			});
+		});
+		$('#login').click(function(){
+			$('#login-popup').removeClass("hidden");
+		})
+		$('#signup').click(function(){
+			$('#signup-popup').removeClass("hidden");
+		})
+		$('#cancel').click(function(){
+			$('#login-popup').addClass("hidden");
+		})
+		$('#cancel-signup').click(function(){
+			$('#signup-popup').addClass("hidden");
+		})
 		$('.block2-btn-addcart').click(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			console.log(nameProduct);
 				$.ajax({
-					url : "/addToCart",
+					url : "/e-commerce/addToCart",
 					type : "POST",
 					async : true,
 					data : nameProduct,
 					success : function(data){
 						if (data == "No User Active") {
-
+							swal("Please Login First :)");
 						}
-						swal(nameProduct, "is added to wishlist !");
+						else{
+							swal(nameProduct, "is added to Cart !");
+						}
 					}
 				});
 		});
@@ -697,6 +791,7 @@
 					}
 				});
 		})
+	});
 	</script>
 
 <!--===============================================================================================-->

@@ -103,11 +103,11 @@
 			<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 				<!-- Product -->
 				<div class="row">
-					<repeat group="{{ @dataproduct }}" value="{{ @img }}">
+					<?php foreach (($dataproduct?:[]) as $img): ?>
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<div class="block2">
 								<div class="block2-img wrap-pic-w of-hidden pos-relative">
-									<img src={{trim(@img.image)}} alt="IMG-PRODUCT">
+									<img src=<?= (trim($img['image'])) ?> alt="IMG-PRODUCT">
 
 									<div class="block2-overlay trans-0-4">
 										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -126,19 +126,22 @@
 
 								<div class="block2-txt p-t-20">
 									<span class="block2-name dis-block s-text3 p-b-5">
-										{{trim(@img.name)}}
+										<?= (trim($img['name']))."
+" ?>
 									</span>
 									<span>
-										{{trim(@img.description)}}
+										<?= (trim($img['description']))."
+" ?>
 									</span>
 								</br>
 									<span class="block2-price m-text6 p-r-5">
-										 IDR {{trim(@img.price)}}
+										 IDR <?= (trim($img['price']))."
+" ?>
 									</span>
 								</div>
 							</div>
 						</div>
-					</repeat>
+					<?php endforeach; ?>
 				</div>
 				</div>
 			</div>
@@ -389,21 +392,7 @@ $(".selection-2").select2({
 <!--===============================================================================================-->
 <script type="text/javascript" src="ui/vendor/user/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript">
-$(document).ready({
 
-});
-$('#form_signup').submit(function(){
-	var form = $(this);
-	var url = form.attr('action');
-	$.ajax({
-		url : url,
-		type : 'POST',
-		data : form.serialize();
-		success : function(data){
-
-		}
-	});
-});
 $('.cancel-login').click(function(){
 	$("#login-popup").addClass("hidden");
 })

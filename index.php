@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['username'] = 'chrisandyarief';
+// $_SESSION['username'] = 'chrisandyarief';
 // Kickstart the framework
 $f3=require('lib/base.php');
 
@@ -11,6 +11,14 @@ if ((float)PCRE_VERSION<7.9)
 // Load configuration
 $f3->config('config.ini');
 
+$f3->route('POST /login',function($f3){
+	
+});
+$f3->route('POST /signup',function($f3){
+	$sql = 'INSERT INTO user (`username`,`password`,`email`,`phoneNumber`,`address`) VALUES ("'.$_POST['username'].'", "'.$_POST['password'].'", "'.$_POST['email'].'", "'.$_POST['phonenumber'].'","'.$_POST['address'].'")';
+	$f3->get("DB")->exec($sql);
+	echo "success";
+});
 //user interface routing
 $f3->route('GET /',function($f3){
 	$sql1 = 'SELECT `image`, `name`, `price` FROM `barang` LIMIT 10';
@@ -119,7 +127,7 @@ $f3->route('POST /checkout',function($f3){
 	}
 	echo "success";
 });
-
+session_destroy();
 $f3->route('POST /addToCart',function($f3){
 	if (isset($_SESSION['username'])) {
 		$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
@@ -155,6 +163,7 @@ $f3->route('POST /addToCart',function($f3){
 		}
 		$sqlAdd = 'UPDATE user SET cart="'.$tmpCart.'" WHERE `id` = "'.$tempId.'"';
 		$f3->get("DB")->exec($sqlAdd);
+		echo "success";
 	}
 	else{
 		echo "No User Active";
@@ -208,17 +217,17 @@ $f3->route('GET /adminUser',function($f3){
 });
 
 // server
-$f3->set("DB",new DB\SQL(
-    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-    'id7413042_admin',
-    'admin123'
-));
+// $f3->set("DB",new DB\SQL(
+//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+//     'id7413042_admin',
+//     'admin123'
+// ));
 
 // //local
-// $f3->set("DB",new DB\SQL(
-//     'mysql:host=localhost;port=3306;dbname=e-commerce',
-//     'root',
-//     ''
-// ));
+$f3->set("DB",new DB\SQL(
+    'mysql:host=localhost;port=3306;dbname=e-commerce',
+    'root',
+    ''
+));
 
 $f3->run();
