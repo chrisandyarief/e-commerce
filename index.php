@@ -12,7 +12,15 @@ if ((float)PCRE_VERSION<7.9)
 $f3->config('config.ini');
 
 $f3->route('POST /login',function($f3){
-	
+	$sql='SELECT `password` FROM `user` WHERE `username`="'.$_POST['username'].'"';
+	$res=$f3->get("DB")->exec($sql);
+
+	if ($_POST['password']==$res[0]['password']) {
+		echo "success";
+	}
+	else{
+		echo "error";
+	}
 });
 $f3->route('POST /signup',function($f3){
 	$sql = 'INSERT INTO user (`username`,`password`,`email`,`phoneNumber`,`address`) VALUES ("'.$_POST['username'].'", "'.$_POST['password'].'", "'.$_POST['email'].'", "'.$_POST['phonenumber'].'","'.$_POST['address'].'")';

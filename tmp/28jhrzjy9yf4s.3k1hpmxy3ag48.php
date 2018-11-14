@@ -650,7 +650,7 @@
 	<div class="hidden" id="login-popup">
 		<div>
 			<h1 class="s-text7">Login to Your Account</h1><br>
-			<form>
+			<form id="form_login" action="/e-commerce/login">
 			  <div class="form-group">
 			    <input type="text" class="form-control" id="login-username" placeholder="Username" name="username" >
 			  </div>
@@ -700,7 +700,33 @@
 				type : 'POST',
 				data : form.serialize(),
 				success : function(data){
-					console.log("error");
+					if (data == "success") {
+						swal("Sign Up Complete :)");
+						location.reload();
+					}
+					else{
+						swal("ERROR!");
+					}
+				}
+			});
+		});
+		$('#form_login').submit(function(e){
+			e.preventDefault();
+			var form = $(this);
+			var url = form.attr('action');
+			console.log(form.serialize());
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : form.serialize(),
+				success : function(data){
+					if (data == "success") {
+						swal("Login Complete :)");
+						location.reload();
+					}
+					else{
+						swal("ERROR!");
+					}
 				}
 			});
 		});
