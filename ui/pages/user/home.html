@@ -46,6 +46,7 @@
 				<div class="topbar-social">
 					<button class="btn btn-primary" id="signup">SIGNUP</button>
 					<button class="btn btn-primary" id="login">LOGIN</button>
+					<button class="btn btn-primary hidden" id="logout">LOGOUT</button>
 				</div>
 
 				<!-- Logo2 -->
@@ -611,7 +612,7 @@
 	<div class="hidden" id="signup-popup">
 		<div>
 			<h1 class="s-text12 p-b-30">Create Your Account</h1><br>
-			<form id="form_signup" action="/e-commerce/signup">
+			<form id="form_signup" action="/signup">
 			  <div class="form-group">
 			    <input type="text" class="form-control" id="signup-username" placeholder="Username" name="username" >
 			  </div>
@@ -639,7 +640,7 @@
 	<div class="hidden" id="login-popup">
 		<div>
 			<h1 class="s-text7">Login to Your Account</h1><br>
-			<form id="form_login" action="/e-commerce/login">
+			<form id="form_login" action="/login">
 			  <div class="form-group">
 			    <input type="text" class="form-control" id="login-username" placeholder="Username" name="username" >
 			  </div>
@@ -734,7 +735,7 @@
 		$('.block2-btn-addcart').click(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
 				$.ajax({
-					url : "/e-commerce/addToCart",
+					url : "/addToCart",
 					type : "POST",
 					async : true,
 					data : nameProduct,

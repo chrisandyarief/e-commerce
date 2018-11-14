@@ -46,6 +46,7 @@
 				<div class="topbar-social">
 					<button class="btn btn-primary" id="signup">SIGNUP</button>
 					<button class="btn btn-primary" id="login">LOGIN</button>
+					<button class="btn btn-primary hidden" id="logout">LOGOUT</button>
 				</div>
 
 				<!-- Logo2 -->
@@ -722,6 +723,7 @@
 				success : function(data){
 					if (data == "success") {
 						swal("Login Complete :)");
+						$('#login-popup').addClass("hidden");
 						location.reload();
 					}
 					else{

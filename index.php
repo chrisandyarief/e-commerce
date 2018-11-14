@@ -12,6 +12,7 @@ if ((float)PCRE_VERSION<7.9)
 $f3->config('config.ini');
 
 $f3->route('POST /login',function($f3){
+	$_SESSION['username'] = $_POST['username'];
 	$sql='SELECT `password` FROM `user` WHERE `username`="'.$_POST['username'].'"';
 	$res=$f3->get("DB")->exec($sql);
 
@@ -135,7 +136,6 @@ $f3->route('POST /checkout',function($f3){
 	}
 	echo "success";
 });
-session_destroy();
 $f3->route('POST /addToCart',function($f3){
 	if (isset($_SESSION['username'])) {
 		$sqlFindId = 'SELECT `id` FROM user WHERE `username` ="'.$_SESSION['username'].'"';
@@ -225,17 +225,17 @@ $f3->route('GET /adminUser',function($f3){
 });
 
 // server
-// $f3->set("DB",new DB\SQL(
-//     'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
-//     'id7413042_admin',
-//     'admin123'
-// ));
+$f3->set("DB",new DB\SQL(
+    'mysql:host=localhost;port=3306;dbname=id7413042_bukantokosebelah',
+    'id7413042_admin',
+    'admin123'
+));
 
 // //local
-$f3->set("DB",new DB\SQL(
-    'mysql:host=localhost;port=3306;dbname=e-commerce',
-    'root',
-    ''
-));
+// $f3->set("DB",new DB\SQL(
+//     'mysql:host=localhost;port=3306;dbname=e-commerce',
+//     'root',
+//     ''
+// ));
 
 $f3->run();
