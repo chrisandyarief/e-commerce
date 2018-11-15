@@ -10,7 +10,6 @@ if ((float)PCRE_VERSION<7.9)
 
 // Load configuration
 $f3->config('config.ini');
-
 $f3->route('POST /login',function($f3){
 	$_SESSION['username'] = $_POST['username'];
 	$sql='SELECT `password` FROM `user` WHERE `username`="'.$_POST['username'].'"';
@@ -201,13 +200,20 @@ $f3->route('POST /listUser',function($f3){
 });
 
 $f3->route('POST /updateTransaction',function($f3){
-	$sql = 'UPDATE `transaksi` SET `id_barang`='.$_POST['id_barang'].',`total`='.$_POST['total'].',`amount`='.$_POST['amount'].',`status`='.$_POST['status'].',`time`='.$_POST['time'].',`buyer_id`='.$_POST['buyer_id'].' WHERE `id`='.$_POST['id'].'';
-    $result = $f3->get("DB")->exec($sql);
+	$sql = 'UPDATE `transaksi` SET `id_barang`='.$_POST['id_barang'].',`total`='.$_POST['total'].',`amount`='.$_POST['amount'].',`status`='.$_POST['status'].',`time`="'.$_POST['time'].'",`buyer_id`='.$_POST['buyer_id'].' WHERE `id`='.$_POST['id'].'';
+	$result = $f3->get("DB")->exec($sql);
 
     //Return result to jTable
     $jTableResult = array();
     $jTableResult['Result'] = "OK";
     print json_encode($jTableResult);
+});
+
+$f3->route('POST /barang',function($f3){
+	$sql = 'INSERT INTO barang (`name`, `image`, `description`, `price`, `stock`) VALUES ("'.$_POST['name'].'", "ui/images/'.$_POST['filename'].'", "'.$_POST['description'].'", '.$_POST['price'].', "'.$_POST['quantity'].'")';
+	$f3->get("DB")->exec($sql);
+	echo "success";
+
 });
 
 $f3->route('GET /adminHome',function($f3){
